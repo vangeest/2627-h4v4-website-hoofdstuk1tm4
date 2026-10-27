@@ -1,0 +1,35 @@
+// Configuration of server image and settings in Codespaces
+// File format: https://aka.ms/devcontainer.json. 
+{
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/universal:latest",
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
+	// Use 'postStartCommand' to run commands after the container is (re)started.
+	"postStartCommand": "bash .devcontainer/postStartCommand.sh",
+	
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		5173
+	],
+	"portsAttributes": {
+		"5173": {
+			"label": "Web Server",
+			"onAutoForward": "notify" // openBrowser is often blocked
+		}
+	},
+	
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"extensions": [
+				"mathematic.vscode-pdf", // add viewer for pdf-files (this one supports vscode-web)
+				"ms-vsliveshare.vsliveshare", // add google-docs like typing in same file, click on live-share button in left icon pane
+				"mhutchie.git-graph", // add graphical viewer for branches and commits, click on button in Source-Code tab
+				"GitHub.copilot-chat", "GitHub.copilot" // finish Copilot setup
+			]
+		}
+	}
+}
